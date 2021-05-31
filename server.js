@@ -14,6 +14,8 @@ const server = http.createServer((req, res)=>{
         const id = req.url.split('/')[3]
         getItem(req, res, id)
 
+        // res.end(JSON.stringify(id))
+
     }else if(req.url==='/api/items' && req.method==='POST'){
 
     }else{

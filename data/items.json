@@ -1,8 +1,10 @@
 [
     {
-        "id":1
+        "id":"1",
+        "name":"Kulu"
     },
     {
-        "id":2
+        "id":"2",
+        "name":"Gilgil"
     }
 ]

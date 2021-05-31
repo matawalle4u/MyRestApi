@@ -9,8 +9,10 @@ function findAll(){
 }
 
 function findById(id){
+
     return new Promise(resolve, reject=>{
-        const item = items.find((it)=>it.id===id)
+
+        const item = items.find( (it)=>it.id===id )
         resolve(item)
     })
 }
