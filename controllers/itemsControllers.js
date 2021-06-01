@@ -17,8 +17,6 @@ async function getItems(req, res){
 
 
 async function getItem(req, res, id){
-
-
     try{
         const item = await Item.findById(id)
 
@@ -30,19 +28,31 @@ async function getItem(req, res, id){
         }else{
             res.writeHead(200, {'Content-type':'application/json'})
             res.end(JSON.stringify(item))
-        }
-
-        
+        }  
 
     }catch(err){
         console.log(err);
     }
 
+}
+
+async function createItem(req,res, filename, item){
+    try{
+
+        const newItem = await Item.create(filename, item)
+        res.writeHead(201, {'Content-type':'application/json'})
+        return res.end(JSON.stringify(newItem))
+
+
+    }catch(err){
+        console.log(err);
+    }
 
 }
 
 
 module.exports = {
     getItems,
-    getItem
+    getItem,
+    createItem
 }

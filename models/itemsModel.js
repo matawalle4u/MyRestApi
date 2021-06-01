@@ -1,5 +1,8 @@
+
 const { resolve } = require('path')
+const { v4:uuidv4 } = require('uuid')
 const items = require('../data/items.json')
+const {writeDataToFile} = require('../utils')
 
 function findAll(){
 
@@ -17,7 +20,18 @@ function findById(id){
     })
 }
 
+function create(filename, item){
+
+    return new Promise((resolve, reject) =>{
+        const newItem = {id: uuidv4(), ...item}
+        items.push(newItem)
+        writeDataToFile(filename, item)
+        resolve(newItem)
+    })
+}
+
 module.exports = {
     findAll,
-    findById
+    findById,
+    create
 }

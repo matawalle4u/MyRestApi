@@ -1,11 +1,11 @@
 
 const PORT = 5000
 const http = require('http')
-const {getItems, getItem} = require('./controllers/itemsControllers')
+const {getItems, getItemm, createItem} = require('./controllers/itemsControllers')
 
 const server = http.createServer((req, res)=>{
 
-    if(req.url==='/api/items'){
+    if(req.url==='/api/items' && req.method==='GET'){
         //Use Regex to match instead of fixed string
         getItems(req, res)
         
@@ -17,6 +17,8 @@ const server = http.createServer((req, res)=>{
         //res.end(JSON.stringify(id))
 
     }else if(req.url==='/api/items' && req.method==='POST'){
+
+        createItem(req,res, './data/items.json', {"name":"Matawalle"})
 
     }else{
         res.writeHead(404, {'Content-type':'application/json'})
